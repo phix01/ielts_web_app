@@ -2,6 +2,9 @@
 
 A complete greenfield rewrite of the IELTS preparation mobile application as a web-based system.
 
+<img width="1842" height="961" alt="image" src="https://github.com/user-attachments/assets/11083d79-d770-455d-91fe-f13fa27912e2" />
+
+
 ## Technology Stack
 
 ### Backend
@@ -222,8 +225,5 @@ The original Firebase collections have been mapped to PostgreSQL tables:
 - `forums` → `forums` table
 - `premium_users` → `premium_users` table
 
-## License
-
-Same as original project.
 
 
