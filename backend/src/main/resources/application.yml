@@ -1,0 +1,89 @@
+spring:
+  config:
+    import:
+      - optional:file:.env
+      - optional:file:backend/.env
+      - optional:file:ielts-prep-web/backend/.env
+  application:
+    name: ielts-prep-api
+  mail:
+    host: ${SMTP_HOST:smtp.gmail.com}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ielts_prep
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+  
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+mail:
+  from: ${MAIL_FROM:no-reply@example.com}
+  frontend-url: ${FRONTEND_URL:http://localhost:3000}
+  # SMTP config via environment variables
+  host: ${SMTP_HOST:smtp.gmail.com}
+  port: ${SMTP_PORT:587}
+  username: ${SMTP_USERNAME:}
+  password: ${SMTP_PASSWORD:}
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
+
+jwt:
+  secret: ${JWT_SECRET:your-256-bit-secret-key-change-in-production-minimum-32-characters}
+  expiration: 86400000 # 24 hours in milliseconds
+
+cors:
+  allowed-origins: ${CORS_ORIGINS:http://localhost:3000}
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true
+
+logging:
+  level:
+    com.ielts: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+
+assistant:
+  # Set the Assistant LLM API key in environment: HF_API_KEY
+  hf:
+    key: ${HF_API_KEY:}
+  # Backwards compatibility: if ASSISTANT_OPENAI_KEY is set, it will be mapped to HF_API_KEY by the dotenv loader
+
+
