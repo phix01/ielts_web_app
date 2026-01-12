@@ -1,6 +1,6 @@
 # IELTS Prep Web Application
 
-A complete greenfield rewrite of the IELTS preparation mobile application as a web-based system.
+IELTS preparation  web-based system.
 
 ## Technology Stack
 
@@ -222,8 +222,6 @@ The original Firebase collections have been mapped to PostgreSQL tables:
 - `forums` → `forums` table
 - `premium_users` → `premium_users` table
 
-## License
 
-Same as original project.
 
 
